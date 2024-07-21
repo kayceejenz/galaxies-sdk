@@ -1,0 +1,29 @@
+{
+  "name": "galaxies-sdk",
+  "version": "1.0.0",
+  "description": "galaxies game sdk",
+  "main": "dist/galaxies-sdk.cjs.js",
+  "module": "dist/galaxies-sdk.esm.js",
+  "types": "dist/galaxies-sdk.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "node test/index.test.js"
+  },
+  "keywords": [
+    "galaxies",
+    "sdk"
+  ],
+  "author": "galaxies labs",
+  "license": "ISC",
+  "dependencies": {
+    "galaxies-access-layer": "^1.0.4",
+    "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "vite": "^5.3.4"
+  }
+}
