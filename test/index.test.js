@@ -42,8 +42,8 @@ const telegramUserId = "5856830847";
 // const addedTicket = await sdk.addTicket(telegramUserId);
 // console.log(addedTicket);
 
-// const topPlayers = await sdk.getTopPlayers();
-// console.log(topPlayers);
+const topPlayers = await sdk.getTopPlayers();
+console.log(topPlayers);
 
 const leaderBoard = await sdk.getLeaderBoard();
 console.log(leaderBoard);
