@@ -98,13 +98,14 @@ export class GalaxiesSdk {
     };
   }
 
-  async checkNewUser(userId) {
-    const [user] = await this.dal.query("user", "userId", "==", userId);
+  async checkNewUser(username) {
+    const [user] = await this.dal.query("user", "username", "==", username);
     return !!user;
   }
 
   async createNewUser(user) {
     user.ticketCount = 7;
+    user.score = 0;
     return await this.dal.add("user", user);
   }
 
@@ -127,32 +128,51 @@ export class GalaxiesSdk {
   }
 
   async setScore(userId, score) {
-    const [userScoreSheet] = await this.dal.query(
-      "scoresheet",
-      "userId",
-      "==",
-      userId
-    );
-    if (userScoreSheet) {
-      userScoreSheet.score =
-        parseFloat(userScoreSheet.score) + parseFloat(score);
-      return await this.dal.update(
-        "scoresheet",
-        userScoreSheet.id,
-        userScoreSheet
-      );
-    } else {
-      return await this.dal.add("scoresheet", { userId, score });
+    const [user] = await this.dal.query("user", "userId", "==", userId);
+
+    if (user) {
+      user.score = parseFloat(user.score || 0) + parseFloat(score);
+      return await this.dal.update("user", user.id, user);
     }
   }
 
   async getScore(userId) {
-    const [scoreSheet] = await this.dal.query(
-      "scoresheet",
-      "userId",
-      "==",
-      userId
+    const [user] = await this.dal.query("user", "userId", "==", userId);
+    return user;
+  }
+
+  async getTopPlayers() {
+    const query = this.dal.cursorQuery(
+      this.dal.getRef("user"),
+      this.dal.orderBy("score", "desc"),
+      this.dal.limit(3)
     );
-    return scoreSheet;
+    const snapshot = await this.dal.getDocs(query);
+
+    const top3Players = [];
+
+    snapshot.forEach((doc) => {
+      top3Players.push({ id: doc.id, ...doc.data() });
+    });
+
+    return top3Players;
+  }
+
+  async getLeaderBoard() {
+    const query = this.dal.cursorQuery(
+      this.dal.getRef("user"),
+      this.dal.orderBy("score", "desc"),
+      this.dal.startAt(1)
+    );
+
+    const snapshot = await this.dal.getDocs(query);
+
+    const board = [];
+
+    snapshot.forEach((doc) => {
+      board.push({ id: doc.id, ...doc.data() });
+    });
+
+    return board;
   }
 }

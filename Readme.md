@@ -140,3 +140,19 @@ Gets the score for a user.
 **Returns:**
 
 - The user's score object.
+
+### `getTopPlayers()`
+
+Gets top 3 players.
+
+**Returns:**
+
+- List user's score object.
+
+### `getLeaderBoard()`
+
+Gets top 3 players.
+
+**Returns:**
+
+- List user's score object.

@@ -1,6 +1,6 @@
 {
   "name": "galaxies-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "galaxies game sdk",
   "main": "dist/galaxies-sdk.cjs.js",
   "module": "dist/galaxies-sdk.esm.js",
@@ -20,7 +20,7 @@
   "author": "galaxies labs",
   "license": "ISC",
   "dependencies": {
-    "galaxies-access-layer": "^1.0.4",
+    "galaxies-access-layer": "^1.1.0",
     "node-telegram-bot-api": "^0.66.0"
   },
   "devDependencies": {

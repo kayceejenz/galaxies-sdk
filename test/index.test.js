@@ -20,21 +20,30 @@ const sdk = new GalaxiesSdk({
 
 const telegramUserId = "5856830847";
 
-const existingUser = await sdk.checkNewUser(telegramUserId);
-console.log(existingUser);
+// const existingUser = await sdk.checkNewUser(telegramUserId);
+// console.log(existingUser);
 
-const telegramUser = await sdk.getTelegramUser(telegramUserId);
-console.log(telegramUser);
+// const telegramUser = await sdk.getTelegramUser(telegramUserId);
+// console.log(telegramUser);
 
-const newUser = await sdk.createNewUser(telegramUser);
-console.log(newUser);
+// const newUser = await sdk.createNewUser(telegramUser);
+// console.log(newUser);
 
-const scoresheet = await sdk.getScore(telegramUserId);
-console.log(scoresheet);
+// const scoresheet = await sdk.getScore(telegramUserId);
+// console.log(scoresheet);
 
-const newScore = 20;
-const newScoreSheet = await sdk.setScore(telegramUserId, newScore);
-console.log(newScoreSheet);
+// const newScore = 20;
+// const newScoreSheet = await sdk.setScore(telegramUserId, newScore);
+// console.log(newScoreSheet);
 
-const newScoreSheet = await sdk.reduceTicket(telegramUserId);
-console.log(newScoreSheet);
+// const reducedTicket = await sdk.reduceTicket(telegramUserId);
+// console.log(reducedTicket);
+
+// const addedTicket = await sdk.addTicket(telegramUserId);
+// console.log(addedTicket);
+
+// const topPlayers = await sdk.getTopPlayers();
+// console.log(topPlayers);
+
+const leaderBoard = await sdk.getLeaderBoard();
+console.log(leaderBoard);
